@@ -1,24 +1,24 @@
-#CNPY
+# CNPY
 
 Small library to read and write Numpy data with C++ Eigen arrays.
 This version includes a Makefile-based build (instead of CMake) and support to Eigen.
 
-##Requirements:
+## Requirements:
 1. zlib
 2. eigen
 
-##Building from source
+## Building from source
 
 Building from source is straightforward. Just run `make` and it will generate a static
 library and a sample binary.
 
-##Using:
+## Using:
 
 To use, #include"cnpy.h" in your source code. Compile the source code mycode.cpp as
 
 g++ -o mycode mycode.cpp -L/path/to/install/dir -lcnpy
 
-##Description:
+## Description:
 
 There are two functions for writing data: `npy_save`, `npz_save`.
 
