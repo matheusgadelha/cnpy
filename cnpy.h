@@ -1,4 +1,5 @@
 //Copyright (C) 2011  Carl Rogers
+//Copyright (C) 2017  Matheus Gadelha
 //Released under MIT License
 //license available in LICENSE file, or at http://www.opensource.org/licenses/mit-license.php
 
@@ -15,6 +16,8 @@
 #include <cassert>
 #include <zlib.h>
 #include <map>
+
+#include <Eigen/Dense>
 
 namespace cnpy {
 
@@ -43,6 +46,7 @@ namespace cnpy {
     npz_t npz_load(std::string fname);
     NpyArray npz_load(std::string fname, std::string varname);
     NpyArray npy_load(std::string fname);
+	Eigen::MatrixXd load(const std::string fname);
 
     template<typename T> std::vector<char>& operator+=(std::vector<char>& lhs, const T rhs) {
         //write in little endian

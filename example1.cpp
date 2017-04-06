@@ -3,6 +3,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <Eigen/Dense>
 
 #include "cnpy.h"
 
@@ -10,8 +11,11 @@ const int Nx = 128;
 const int Ny = 64;
 const int Nz = 32;
 
-int main()
-{
+using Eigen::MatrixXd;
+
+int main(){
+
+	MatrixXd m(2,2);
     //create random data
     std::complex<double>* data = new std::complex<double>[Nx*Ny*Nz];
     for(int i = 0;i < Nx*Ny*Nz;i++) data[i] = std::complex<double>(rand(),rand());

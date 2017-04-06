@@ -246,5 +246,8 @@ cnpy::NpyArray cnpy::npy_load(std::string fname) {
     return arr;
 }
 
-
+Eigen::MatrixXd cnpy::load(const std::string fname)
+{
+	return Eigen::MatrixXd(2,2);
+}
 
