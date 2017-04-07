@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -O3
+CFLAGS = -Wall -ggdb
 EIGEN_INCLUDE = -I eigen/
 
 all: example1.cpp libcnpy.a
@@ -10,5 +10,7 @@ libcnpy.a: cnpy.o
 	ranlib libcnpy.a
 
 cnpy.o:
-	$(CC) $(CFLAGS) -g -c cnpy.cpp
+	$(CC) $(CFLAGS) $(EIGEN_INCLUDE) -g -c cnpy.cpp
 
+clean:
+	rm -f *.o

@@ -248,6 +248,18 @@ cnpy::NpyArray cnpy::npy_load(std::string fname) {
 
 Eigen::MatrixXd cnpy::load(const std::string fname)
 {
-	return Eigen::MatrixXd(2,2);
+	NpyArray arr = npy_load(fname);
+
+	assert(arr.shape.size() == 2);
+
+	Eigen::MatrixXd mat(arr.shape[0], arr.shape[1]);
+	double* data = reinterpret_cast<double*>(arr.data);
+	for (size_t i = 0; i < arr.shape[0]; ++i) {
+		for (size_t j = 0; j < arr.shape[1]; ++j) {
+			mat(i, j) = data[arr.shape[1]*i + j];
+		}
+	}
+
+	return mat;
 }
 

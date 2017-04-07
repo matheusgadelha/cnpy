@@ -63,4 +63,13 @@ int main(){
     delete[] loaded_data;
     arr2.destruct();
     my_npz.destruct();
+
+	Eigen::MatrixXd pc0 = cnpy::load("/home/mgadelha/PointData/reordered_chairs_airplanes/pc_0.npy");
+	for (size_t i = 0; i < 1024; ++i){
+		for (size_t j = 0; j < 3; ++j){
+			std::cout << pc0(i, j) << " ";
+		}
+		std::cout << std::endl;
+	}
+	return 0;
 }
