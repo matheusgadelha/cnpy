@@ -46,7 +46,7 @@ namespace cnpy {
     npz_t npz_load(std::string fname);
     NpyArray npz_load(std::string fname, std::string varname);
     NpyArray npy_load(std::string fname);
-	Eigen::MatrixXd load(const std::string fname);
+	Eigen::MatrixXf load(const std::string fname);
 
     template<typename T> std::vector<char>& operator+=(std::vector<char>& lhs, const T rhs) {
         //write in little endian

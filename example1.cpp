@@ -11,11 +11,11 @@ const int Nx = 128;
 const int Ny = 64;
 const int Nz = 32;
 
-using Eigen::MatrixXd;
+using Eigen::MatrixXf;
 
 int main(){
 
-	MatrixXd m(2,2);
+	MatrixXf m(2,2);
     //create random data
     std::complex<double>* data = new std::complex<double>[Nx*Ny*Nz];
     for(int i = 0;i < Nx*Ny*Nz;i++) data[i] = std::complex<double>(rand(),rand());
@@ -64,7 +64,7 @@ int main(){
     arr2.destruct();
     my_npz.destruct();
 
-	Eigen::MatrixXd pc0 = cnpy::load("/home/mgadelha/PointData/reordered_chairs_airplanes/pc_0.npy");
+	Eigen::MatrixXf pc0 = cnpy::load("/home/mgadelha/PointData/reordered_chairs_airplanes/pc_0.npy");
 	for (size_t i = 0; i < 1024; ++i){
 		for (size_t j = 0; j < 3; ++j){
 			std::cout << pc0(i, j) << " ";

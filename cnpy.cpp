@@ -246,19 +246,20 @@ cnpy::NpyArray cnpy::npy_load(std::string fname) {
     return arr;
 }
 
-Eigen::MatrixXd cnpy::load(const std::string fname)
+Eigen::MatrixXf cnpy::load(const std::string fname)
 {
 	NpyArray arr = npy_load(fname);
 
 	assert(arr.shape.size() == 2);
 
-	Eigen::MatrixXd mat(arr.shape[0], arr.shape[1]);
+	Eigen::MatrixXf mat(arr.shape[0], arr.shape[1]);
 	double* data = reinterpret_cast<double*>(arr.data);
 	for (size_t i = 0; i < arr.shape[0]; ++i) {
 		for (size_t j = 0; j < arr.shape[1]; ++j) {
-			mat(i, j) = data[arr.shape[1]*i + j];
+			mat(i, j) = (float) data[arr.shape[1]*i + j];
 		}
 	}
+	delete[] arr.data;
 
 	return mat;
 }
