@@ -71,5 +71,7 @@ int main(){
 		}
 		std::cout << std::endl;
 	}
+
+	cnpy::save(pc0, "test.npy");
 	return 0;
 }

@@ -264,3 +264,17 @@ Eigen::MatrixXf cnpy::load(const std::string fname)
 	return mat;
 }
 
+void cnpy::save(const Eigen::MatrixXf& mat, const std::string fname)
+{
+	std::vector<float> matvec(mat.rows() * mat.cols());
+	unsigned int shape[] = {(unsigned int) mat.rows(), (unsigned int)mat.cols()};
+
+	for (int i = 0; i < mat.rows(); ++i){
+		for (int j = 0; j < mat.cols(); ++j){
+			matvec[i*mat.cols() + j] = mat(i, j);
+		}
+	}
+
+	npy_save(fname, matvec.data(), shape, 2);
+}
+
